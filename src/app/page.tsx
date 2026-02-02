@@ -5,6 +5,9 @@ import * as prismic from "@prismicio/client";
 import Link from "next/link";
 import { PrismicNextImage } from "@prismicio/next";
 
+//export const revalidate = 172800; // 2 dias em segundos
+export const revalidate = 60; // 60 segundos
+
 export default async function Home() {
   const client = createClient();
 
@@ -58,7 +61,7 @@ export default async function Home() {
         <div className={styles.heroVisual}>
           {home?.data.imagem ? (
             <div className={styles.imageWrapper}>
-              <PrismicNextImage field={home.data.imagem} className={styles.heroImage} />
+              <PrismicNextImage field={home.data.imagem} className={styles.heroImage} fallbackAlt="" />
             </div>
           ) : (
             <div className={styles.gradientSphere}></div>
